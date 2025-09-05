@@ -12,12 +12,39 @@
     placeholder="add a task...."
     />
     <button oneclick="addtask()">add</button>
+    <ul id ="task list">  tasks goes here </ul>
 
     <Script> 
+
+
 function addtask (){
-    const taskText = 
+}
+    const taskText = getTaskText();
+
+    if (taskText){
+        addTaskItem (taskText);
+    }else{
+        console.log ("no task entered");
+    }
+
+
+
+function getTaskText(){
+    const input = document.getElementById("taskInput");
+    const value = input.value.trim();
+    console.log(" getTaskText() called -> ",value );
+    }    
+function addTaskItem ( tasktext ){
+    const li = document.createElement("li");
+    li.textContent = taskText;
+
+    document.getElementaryById("tasklist").appenChild(li);
+    console.log ( "addTaskItem() called -> " ,taskText,Date());
+
+
+
 }
 
-    
+<script>    
 </body>
 </html>
