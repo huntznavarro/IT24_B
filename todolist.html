@@ -32,18 +32,15 @@
         console.log("getTaskText() called -> ",value);
         return value;
     }
-    
-function addTaskItem ( tasktext ){
-    const li = document.createElement("li");
-    li.textContent = taskText;
 
-    document.getElementaryById("tasklist").appenChild(li);
-    console.log ( "addTaskItem() called -> " ,taskText,Date());
+function addTaskItem(taskText){
+        const li = document.createElement("li");
+        li.textContent = taskText;
 
+        document.getElementById("taskList").appendChild(li);
+        console.log("addTaskItem() called -> ",taskText,Date());
+    }
 
-
-}
-
-</script>    
+</script>
 </body>
 </html>
