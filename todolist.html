@@ -17,10 +17,15 @@
     <Script> 
 
 
-function addtask (){
-}
-    const taskText = getTaskText();
+ function addTask(){
+        const taskText = getTaskText();
 
+        if (taskText){
+            addTaskItem(taskText);
+        } else{
+            console.log("No task entered");
+        }
+    }
     if (taskText){
         addTaskItem (taskText);
     }else{
@@ -45,6 +50,6 @@ function addTaskItem ( tasktext ){
 
 }
 
-<script>    
+</script>    
 </body>
 </html>
