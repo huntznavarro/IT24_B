@@ -57,7 +57,7 @@
         const editBtn = createEditButton(li,taskSpan);
         li.appendChild(editBtn);
 
-        const doneBtn = createDoneButton(taskSpan);
+        const doneBtn = createDoneButton(li);
         li.appendChild(doneBtn);
 
     }
@@ -103,21 +103,24 @@
         }
     }
 
-    function createDoneButton(taskSpan){
+     function createDoneButton(li){
         const doneBtn = document.createElement("button");
         doneBtn.textContent = "Done";
+        doneBtn.style.marginLeft = "8px";
         doneBtn.onclick = () =>{
-            const li= taskSpan.parentElement;
             console.log(li);
+            li.classList.add("done");
+            const buttons = li.querySelectorAll("button");
 
-            taskSpan.classList.add("done");
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                });
 
-            const buttons = li.querySelectorAll("buttons");
-
-            console.log("Task completed", taskSpan.textContent, Date());
+            console.log("Task Completed", li.textContent, Date());
         }
         return doneBtn;
     }
+
 </script>
     
 </body>
