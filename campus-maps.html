@@ -53,9 +53,17 @@
         console.log)("base map title layer loaded" + Date ());
 
         const markerGroups ={},
-
         fetch(mapDataUrl)
-        then.(response =>w)
+            .then(response => response.json())
+            .then(data=>{
+            //Markers
+            data.forEach(pin => {
+                const type = pin.locationType || "Other";
+
+                 //Create Marker Group
+                if(!markerGroups[type]){
+                    markerGroups[type] = L.layerGroup();
+                }
 
 
         document.adddEventListener("DOMContentLoaded",()=>{
