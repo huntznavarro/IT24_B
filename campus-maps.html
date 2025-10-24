@@ -65,6 +65,22 @@
                     markerGroups[type] = L.layerGroup();
                 }
 
+                    //Marker and Popup
+                const marker = L.marker([pin.lat, pin.lng]).addTo(map);
+                const img = `<img src='${pin.img}' class="popup-image">`;
+                    marker.bindPopup(`
+                        ${img} <br>
+                        <b>${pin.title}<br>
+                        ${pin.description}<br>
+                        ${pin.locationType}
+                `);
+                console.log(`${pin.name} Loaded ` + Date());
+
+                markerGroups[type].addLayer(marker);
+             
+
+            });
+
 
         document.adddEventListener("DOMContentLoaded",()=>{
         initMap('campus-map.json);
