@@ -28,34 +28,30 @@
 
 </body>
 <script>
-    function initMap(DataURL){
+    function initMap(mapDataUrl){
+    const map = L.map('map').setView([8.3603,124.8684],17)
 
-    }
-    Document .addEventListener("DOMContentLoaded",()=>{
-        const map = L.map('map').setview([])
-
-        //openstreetmap
-        const openStreetMap = L.titleLayer(''https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy;OpenStreetMap Contributors'
-
+    //OpenStreetMap
+    const openStreetMap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        maxZoom:19,
+        attribution:'&copy; OpenStreetMap contributors'
     })
 
-            //satelite
-            const satellite = L.titleLayer(
-            
-            
-            );
 
+           //Satellite
+    const satellite = L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        {attribution:'Tiles (c) Esri - Source, Maxar, Earthstar Geographics, and GIS User Community'}
+    );
 
+       openStreetMap.addTo(map);
+    console.log("Base map tile layer loaded" + Date());
 
-        openStreetMap.addto(Map);
-        console.log)("base map title layer loaded" + Date ());
+    const markerGroups = {};
 
-        const markerGroups ={},
-        fetch(mapDataUrl)
-            .then(response => response.json())
-            .then(data=>{
+    fetch(mapDataUrl)
+        .then(response => response.json())
+        .then(data=>{
             //Markers
             data.forEach(pin => {
                 const type = pin.locationType || "Other";
@@ -101,19 +97,13 @@
         })
         .catch(err=> console.error('Error loading JSON',err));
 
+    }
 
-
-        document.adddEventListener("DOMContentLoaded",()=>{
-        initMap('campus-map.json);
-        
-        });
-
-
-</sript>
- </html>
-
-        
-        
+    document.addEventListener("DOMContentLoaded",()=>{
+    initMap('campus-map.json');
+    });
+    </script>
+    </html>
         
 
 
